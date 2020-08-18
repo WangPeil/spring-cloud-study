@@ -10,6 +10,8 @@
 
     <modules>
         <module>cloud-provider-payment-8001</module>
+        <module>cloud-consumer-order-8000</module>
+        <module>cloud-payment-api</module>
     </modules>
 
     <!--聚合传递依赖-->
@@ -80,6 +82,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
             </plugin>
         </plugins>
     </build>

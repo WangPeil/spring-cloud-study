@@ -1,5 +1,6 @@
 package com.example.controller;
 
+
 import com.example.pojo.CommonResult;
 import com.example.pojo.Payment;
 import com.example.service.PaymentService;
@@ -35,7 +36,7 @@ public class PaymentController {
 
     }
 
-    @PostMapping("/payment/{serial}")
+    @PostMapping("/payment/insert/{serial}")
     public CommonResult<Integer> insert(@PathVariable("serial") String serial) {
         Integer result = paymentService.insert(new Payment(serial));
         if (result > 0) {
