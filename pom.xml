@@ -18,6 +18,7 @@
         <module>cloud-provider-payment-8002</module>
         <module>cloud-provider-payment-8003</module>
         <module>cloud-consumer-order-7999</module>
+        <module>cloud-consumer-order-7998</module>
     </modules>
 
     <!--聚合传递依赖-->
