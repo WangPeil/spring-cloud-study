@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.pojo.CommonResult;
-import com.example.pojo.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
