@@ -1,0 +1,25 @@
+server:
+  port: 7998
+
+spring:
+  application:
+    name: cloud-payment-comsumer
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/,http://localhost:7003/eureka/
+  instance:
+    instance-id: cloud-payment-service-${server.port}
+    prefer-ip-address: true
+
+#fegin 日志查看功能
+logging:
+  level:
+    com.example.service.OrderService: debug
+
+feign:
+  hystrix:
+    enabled: true

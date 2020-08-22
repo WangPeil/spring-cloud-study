@@ -1,9 +1,7 @@
 package com.example.service;
 
 import com.example.pojo.CommonResult;
-import com.example.pojo.Payment;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 /**
  * @author wangpeil
  */
-@Component
+@Service
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE")
 public interface OrderService {
     @GetMapping("/payment/{id}")

@@ -21,14 +21,15 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/payment/{id}")
-    public CommonResult<?> select(@PathVariable("id") Long id) {
-        return new CommonResult<>(SUCCESS_CODE, "success", orderService.select(id));
+    @GetMapping("/payment/hystrix/ok/{id}")
+    public CommonResult<?> paymentOk(@PathVariable("id") Long id) {
+        return new CommonResult<>(SUCCESS_CODE, "success", orderService.paymentOk(id));
     }
 
-    @PostMapping("/payment/insert/{serial}")
-    public CommonResult<?> insert(@PathVariable("serial") String serial) {
-        return new CommonResult<>(SUCCESS_CODE, "success", orderService.insert(serial));
+    @PostMapping("/payment/hystrix/timeout/{id}")
+    public CommonResult<?> paymentTimeout(@PathVariable("id") Long id) {
+        return new CommonResult<>(SUCCESS_CODE, "success", orderService.paymentTimeout(id));
     }
+
 }
 
