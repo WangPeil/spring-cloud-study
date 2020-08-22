@@ -14,3 +14,8 @@ eureka:
   instance:
     instance-id: cloud-payment-service-${server.port}
     prefer-ip-address: true
+
+#fegin 日志查看功能
+logging:
+  level:
+    com.example.service.OrderService: debug
