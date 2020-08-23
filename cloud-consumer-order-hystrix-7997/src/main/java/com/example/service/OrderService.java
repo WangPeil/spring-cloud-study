@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
+ * DefaultProperties指定默认的降级方法 避免代码膨胀
+ *
  * @author wangpeil
  */
 @Service
-@FeignClient(value = "CLOUD-PAYMENT-SERVICE")
+@FeignClient(value = "CLOUD-PAYMENT-SERVICE", fallback = OrderFallbackServiceImpl.class)
 public interface OrderService {
     @GetMapping("/payment/hystrix/ok/{id}")
     CommonResult<?> paymentOk(@PathVariable("id") Long id);
@@ -24,19 +26,9 @@ public interface OrderService {
      * @param id
      * @return
      */
-    @HystrixCommand(fallbackMethod = "paymentInfoTimeoutHandler", commandProperties = {
+    @HystrixCommand(commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
     })
     @PostMapping("/payment/hystrix/timeout/{id}")
     CommonResult<?> paymentTimeout(@PathVariable("id") Long id);
-
-    /**
-     * 回调方法
-     *
-     * @param id
-     * @return
-     */
-    default String paymentInfoTimeoutHandler(Long id) {
-        return "对方请求繁忙，请重试。";
-    }
 }
